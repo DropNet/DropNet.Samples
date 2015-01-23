@@ -52,10 +52,13 @@ namespace DropNet.Samples.WP7
             }
 
             ////////////////////////////////////////////////////
-            // NOTE: This key is a Development only key setup for this sample and will only work with my login.
+            // NOTE: This key is a Development only key setup for this sample and will not work for you
             // MAKE SURE YOU CHANGE IT OR IT WONT WORK!
             ////////////////////////////////////////////////////
-            DropNetClient = new DropNetClient("9m6v782a7aeop0w", "dbd11uqce6hr8zg");
+            DropNetClient = new DropNetClient("y0mm6cm3psurvi7", "zfeijf4xbzdi072");
+
+            //Set the UseSandbox for app folder access
+            DropNetClient.UseSandbox = true;
 
             //NOTE: If user Token and Secret are stored from previous login session:
             //DropNetClient.UserLogin = new Models.UserLogin { Token = "TokenFromStorage", Secret = "SecretFromStorage" };
