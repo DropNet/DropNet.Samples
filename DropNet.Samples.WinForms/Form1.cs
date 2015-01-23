@@ -20,10 +20,13 @@ namespace DropNet.Samples.WinForms
             InitializeComponent();
 
             ////////////////////////////////////////////////////
-            // NOTE: This key is a Development only key setup for this sample and will only work with my login.
+            // NOTE: This key is a Development only key setup for this sample and will not work for you
             // MAKE SURE YOU CHANGE IT OR IT WONT WORK!
             ////////////////////////////////////////////////////
-            _client = new DropNetClient("9m6v782a7aeop0w", "dbd11uqce6hr8zg");
+            _client = new DropNetClient("y0mm6cm3psurvi7", "zfeijf4xbzdi072");
+
+            //Set the UseSandbox for app folder access
+            _client.UseSandbox = true;
 
             //NOTE: If user Token and Secret are stored from previous login session:
             //DropNetClient.UserLogin = new Models.UserLogin { Token = "TokenFromStorage", Secret = "SecretFromStorage" };
@@ -69,12 +72,25 @@ namespace DropNet.Samples.WinForms
                         //Save the Token and Secret we get here to save future logins
                         _userLogin = userLogin;
 
+                        Invoke((MethodInvoker)delegate
+                        {
+                            brwLogin.Visible = false;
+                        });
+
                         LoadContents();
                     },
                     (error) =>
                     {
                         //Some sort of error
-                        MessageBox.Show(error.Response.Content);
+                        var restError = error as DropNet.Exceptions.DropboxRestException;
+                        if (restError != null)
+                        {
+                            MessageBox.Show(restError.Response.Content);
+                        }
+                        else
+                        {
+                            MessageBox.Show(error.Message);
+                        }
                     });
             }
         }
@@ -83,7 +99,8 @@ namespace DropNet.Samples.WinForms
         {
             _client.GetMetaDataAsync("/", (response) =>
             {
-                MessageBox.Show(response.Contents.Count(c => c.Is_Dir) + " Folders found.");
+                //TODO - something better here to show the contents?
+                MessageBox.Show(string.Format("{1} folders found {0}{2} files found", Environment.NewLine, response.Contents.Count(c => c.Is_Dir), response.Contents.Count(c => !c.Is_Dir)));
             },
             (error) =>
             {
