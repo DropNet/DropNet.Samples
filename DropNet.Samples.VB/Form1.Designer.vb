@@ -22,29 +22,43 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnLogin = New System.Windows.Forms.Button()
+        Me.loginBrowser = New System.Windows.Forms.WebBrowser()
         Me.SuspendLayout()
         '
-        'Button1
+        'btnLogin
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "TEST"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnLogin.Location = New System.Drawing.Point(12, 12)
+        Me.btnLogin.Name = "btnLogin"
+        Me.btnLogin.Size = New System.Drawing.Size(75, 23)
+        Me.btnLogin.TabIndex = 0
+        Me.btnLogin.Text = "Login"
+        Me.btnLogin.UseVisualStyleBackColor = True
+        '
+        'loginBrowser
+        '
+        Me.loginBrowser.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.loginBrowser.Location = New System.Drawing.Point(12, 41)
+        Me.loginBrowser.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.loginBrowser.Name = "loginBrowser"
+        Me.loginBrowser.Size = New System.Drawing.Size(582, 361)
+        Me.loginBrowser.TabIndex = 1
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 261)
-        Me.Controls.Add(Me.Button1)
+        Me.ClientSize = New System.Drawing.Size(606, 414)
+        Me.Controls.Add(Me.loginBrowser)
+        Me.Controls.Add(Me.btnLogin)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnLogin As System.Windows.Forms.Button
+    Friend WithEvents loginBrowser As System.Windows.Forms.WebBrowser
 
 End Class
